@@ -4,7 +4,7 @@ const server = require('http').createServer(app);
 const userRouter = require('../router/user');
 const messageRouter = require('../router/message');
 
-var port_number = process.env.Port ||8080;
+var port_number = process.env.PORT||8080;
 //process.env.PORT || 
 
 app.use(express.json())
