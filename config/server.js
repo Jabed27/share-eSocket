@@ -1,11 +1,14 @@
+const http = require('http');
+
 const express = require('express');
 const app = express();
-const server = require('http').createServer(app);
+require('dotenv').config();
+
+
 const userRouter = require('../router/user');
 const messageRouter = require('../router/message');
 
-var port_number = process.env.PORT ||8080;
-//process.env.PORT || 
+
 
 app.use(express.json())
 app.use(express.static('public'));
@@ -17,6 +20,14 @@ app.get('/',(req,res) =>{
     res.send('HOŞGELDİNİZ');
 });
 
-server.listen(port_number);
+const port = process.env.PORT || 3000;
+
+const server = http.createServer(app);
+
+server.listen(port,()=>{
+    console.log("Server listening on port: "+port);
+    
+    
+});
 
 module.exports = server;
