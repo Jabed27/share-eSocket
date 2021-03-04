@@ -1,4 +1,5 @@
 const http = require('http');
+var morgan = require('morgan');
 
 const express = require('express');
 const app = express();
@@ -9,8 +10,8 @@ const userRouter = require('../router/user');
 const messageRouter = require('../router/message');
 
 
-
-app.use(express.json())
+app.use( morgan('dev'));
+app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/user',userRouter);
